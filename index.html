@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Navigator</title>
+		<link rel="stylesheet" href="styles/style.css" />
+	</head>
+	<body>
+		<div class="container">
+			<div class="current-position">
+				<h2 class="title">Ведите Текущую позицию</h2>
+				<label class="label" for="positionLatitude">
+					Широта текущей позиции
+				</label>
+				<input type="text" class="input" id="positionLatitude" />
+				<label class="label" for="positionLongitude">
+					Долгота текущей позиции
+				</label>
+				<input type="text" class="input" id="positionLongitude" />
+			</div>
+			<div class="desired-destination">
+				<h2 class="title">Ведите Пункт назначения</h2>
+				<label class="label" for="destinationLatitude">
+					Широта пункта назначения
+				</label>
+				<input type="text" class="input" id="destinationLatitude" />
+				<label class="label" for="destinationLongitude">
+					Долгота пункта назначения
+				</label>
+				<input type="text" class="input" id="destinationLongitude" />
+			</div>
+			<button class="button" id="submit">Рассчитать</button>
+
+			<h2 class="position">
+				Текущая позиция:
+				<span id="position"></span>
+			</h2>
+			<h2 class="distantion">
+				Пункт назначения:
+				<span id="distantion"></span>
+			</h2>
+
+			<h2 class="way-to-go">
+				Осталось:
+				<span id="way"></span>
+			</h2>
+		</div>
+		<script src="js/main.js"></script>
+	</body>
+</html>
