@@ -8,27 +8,27 @@ console.log(`${result !== null ? `Ваша сумма из ${baseCurrency} в ${
 
 
 function convert(base, target, amount){
-	let isPossible = possibleConversion(target);
+	let isPossible = possibleConversion(base, target);
 	let converted = null;
 	if(isPossible) {
 		if(base == "RUB" && target == "USD") {
 			converted = parseFloat(amount / 94.22);
 		}
-		if(base == "RUB" && target == "EUR"){
+		else if(base == "RUB" && target == "EUR"){
 			converted = parseFloat(amount / 105.26);
 		}
-		if(base == "USD" && target == "RUB")
+		else if(base == "USD" && target == "RUB")
 		{
 			converted = parseFloat(amount * 94.22);
 		}
-		if(base == "EUR" && target == "RUB")
+		else if(base == "EUR" && target == "RUB")
 		{
 			converted = parseFloat(amount * 105.26);
 		}
-		if(base == "USD" && target == "EUR"){
+		else if(base == "USD" && target == "EUR"){
 			converted = parseFloat(amount * 0.90);
 		}
-		if(base == "EUR" && target == "USD"){
+		else if(base == "EUR" && target == "USD"){
 			converted = parseFloat(amount / 0.90);
 		}
 	}
@@ -37,6 +37,6 @@ function convert(base, target, amount){
 
 }
 
-function possibleConversion(target) {
-	return target == "RUB" || target == "USD" || target == "EUR";
+function possibleConversion(base, target) {
+	return (target == "RUB" || target == "USD" || target == "EUR") && (base == "RUB" || base == "USD" || base == "EUR");
 }
