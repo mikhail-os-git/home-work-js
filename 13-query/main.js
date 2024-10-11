@@ -8,14 +8,16 @@ let url = 'https://yandex.com/';
 
 function fillSearchQuery(obj, link) {
     let count = 0;
-		link += '?';
-    for(const key of Object.keys(obj)) {
-        count++
-        link += `${key}=${obj[key]}`;
-        if(count < Object.keys(obj).length) {
-            link += '&';
-        }
-    }
+		if(Object.keys(obj).length > 0) {
+			link += '?';
+			for(const key of Object.keys(obj)) {
+					count++
+					link += `${key}=${obj[key]}`;
+					if(count < Object.keys(obj).length) {
+							link += '&';
+					}
+			}
+		}
     return link;
 }
 
