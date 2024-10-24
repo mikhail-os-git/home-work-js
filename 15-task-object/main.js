@@ -55,3 +55,5 @@ const ToDoList = {
 
 ToDoList.addTask(2,'something');
 console.log(ToDoList.tasks);
+
+export default ToDoList;
