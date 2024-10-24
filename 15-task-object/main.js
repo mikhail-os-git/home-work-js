@@ -11,27 +11,25 @@ const ToDoList = {
     findById(id) {
         return this.tasks.findIndex(el => el.id === id);
     },
-    addTask(id, priority, titleText) {
-
-        const isExisting = this.findById(id) === -1;
-        if(isExisting) {
-            this.tasks.push(
-                {
-                    id,
-                    priority,
-                    title: titleText
-                }
-            )
-            console.log('Новая задача добавлена.');
-            console.log(`Ваши задачи: ${this.tasks.map(el => el.title).join(', ')}`);
-        }
-        else {
-            console.log(`Задачи с таким id: ${id} уже существует.`);
-        }
+    addTask(priority, title) {
+      if(priority && title) {
+        const id = this.tasks.length + 1;
+        this.tasks.push(
+            {
+                id,
+                priority,
+                title
+            }
+        )
+        console.log(`Новая задача добавлена.\nВаши задачи: ${this.tasks.map(el => el.title).join(', ')}`);
+      } else {
+        console.log('Заполните приоритетность или добавьте название задачи.');
+      }
+        
     },
     removeTasksById(id) {
         const index = this.findById(id);
-        if(index != -1) {
+        if(index !== -1) {
             this.tasks.slice(index, 1);
             console.log(`Задача с id: ${id} успешно удалена.`);
         }else {
@@ -42,20 +40,18 @@ const ToDoList = {
         this.tasks.sort((a,b) => a.priority - b.priority );
         console.log('Ваш ToDoList отсортирован по приоритетности.');
     },
-    refreshTitleById(id, titleText) {
+    refreshTitleById(id, title) {
         const index = this.findById(id);
         if(index  !== -1 ) {
             const oldTitle = this.tasks[index].title;
-            this.tasks[index].title = titleText;
+            this.tasks[index].title = title;
     
-            console.log(`Ваша задача с id: ${id} - ${oldTitle} изменена на ${titleText}`);
+            console.log(`Ваша задача с id: ${id} - ${oldTitle} изменена на ${title}`);
         }else {
             console.log(`Задачи с таким: ${id} не существует.`);
         }
-        
     }
 }
 
-ToDoList.addTask(2,3,'blabla');
-
-ToDoList.refreshTitleById(2,'something');
+ToDoList.addTask(2,'something');
+console.log(ToDoList.tasks);
