@@ -6,7 +6,9 @@ import ToDoList from '../15-task-object/main.js';
 function extendedTaskList(priority, title, description = null) {
   const newToDoList = {
     tasks: [],
+		lastId: 0
   }
+	newToDoList.log = ToDoList.log;
 
   //Переиспользование методов
   const addTask = ToDoList.addTask.bind(newToDoList) 
