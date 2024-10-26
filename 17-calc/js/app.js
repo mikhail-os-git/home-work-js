@@ -1,7 +1,8 @@
 const input1 = document.getElementById('num1');
 const input2 = document.getElementById('num2');
-const output = document.querySelector('.result');
+const output = document.getElementById('result');
 const solve = document.getElementById('solve');
+const panel = document.querySelector('.result-container');
 
 
 const operations = document.querySelectorAll('.operation-btn');
@@ -18,6 +19,13 @@ let operator;
 			});
 		});
 
+		function show(result) {
+			panel.classList.remove('none');
+			output.innerText = result;
+			input1.value = '';
+			input2.value = '';
+		}
+
 function calculate(){
 		if(operator){
 		const num1 = input1.value;
@@ -26,28 +34,23 @@ function calculate(){
         const n1 = parseFloat(num1);
         const n2 = parseFloat(num2);
 					if(operator == operators[0]) {
-						result.innerText = n1 + n2;
+						show(n1 + n2);
 					} else if(operator == operators[1]) {
-						result.innerText = n1 - n2;
+						show(n1 - n2);
 					} else if(operator == operators[2]) {
-						result.innerText = n1 * n2;
+						show(n1 * n2);
 					} else if(operator == operators[3]) {
             if (n2 !== 0) {
-                output.innerText = n1 / n2;
+                show(n1 / n2);
             } else {
-                output.innerText = "Ошибка: деление на ноль";
+                show('Ошибка: деление на ноль');
             }
 					}
 				} else {
-					result.innerText = 'В полях должно быть число';
+					show('В полях должно быть число');
 				}
 			} else {
-				result.innerText = "Вы не выбрали операцию";
+				show('Вы не выбрали операцию');
 			}
-
-			input1.value = '';
-			input2.value = '';
-
-
 }
 solve.addEventListener('click', calculate);
